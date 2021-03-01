@@ -15,11 +15,16 @@ public class LevelParserStarter : MonoBehaviour
 
     public GameObject Stone;
 
+    public GameObject Lava;
+
+    public GameObject Goal;
+
     public Transform parentTransform;
     // Start is called before the first frame update
     void Start()
     {
         RefreshParse();
+        
     }
 
 
@@ -39,7 +44,7 @@ public class LevelParserStarter : MonoBehaviour
                 foreach (var letter in letters)
                 {
                     //Call SpawnPrefab
-                    SpawnPrefab(letter, new Vector3(column, row, 0));
+                    SpawnPrefab(letter, new Vector3(column, row, -0.5f));
                     column++;
                 }
                 row--;
@@ -73,6 +78,16 @@ public class LevelParserStarter : MonoBehaviour
             case 's':
                 ToSpawn = Stone;
                 Debug.Log("Spawn Stone"); 
+                break;
+
+            case 'l':
+                ToSpawn = Lava;
+                Debug.Log("Spawn Lava");
+                break;
+
+            case 'G':
+                ToSpawn = Goal;
+                Debug.Log("Spawn Goal");
                 break;
 
             //default: Debug.Log("Default Entered"); break;
